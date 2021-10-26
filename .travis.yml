@@ -1,0 +1,15 @@
+language: python
+
+cache: pip
+
+python:
+  - "3.8"
+
+install:
+  - pip install pipenv --upgrade-strategy=only-if-needed
+  - pipenv install --dev
+
+script:
+  - make grpc-gen
+  - make lint
+  - make test

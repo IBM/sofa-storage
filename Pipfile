@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+grpcio = "*"
+grpcio-tools = "*"
+pyyaml = "*"
+click = "*"
+
+[dev-packages]
+pylint = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-grpc = "*"
+flake8 = "*"
+bandit = "*"
+
+[requires]
+python_version = "3.8"

@@ -1,0 +1,105 @@
+// Copyright (c) 2021 International Business Machines
+// All rights reserved.
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package storage;
+
+/**
+*
+*/
+service Storage {
+    rpc DPUPublishVolume (DPUPublishVolumeRequest)
+        returns (DPUPublishVolumeResponse) {}
+
+    rpc DPUUnpublishVolume (DPUUnpublishVolumeRequest)
+        returns (DPUUnpublishVolumeResponse) {}
+
+    rpc DPUGetInfo (DPUGetInfoRequest)
+        returns (DPUGetInfoResponse) {}
+
+    rpc DPUCreateController (DPUCreateControllerRequest)
+        returns (DPUCreateControllerResponse) {}
+
+    rpc DPUDeleteController (DPUDeleteControllerRequest)
+        returns (DPUDeleteControllerResponse) {}
+}
+
+
+/**
+*
+*/
+message DPUPublishVolumeRequest {
+    string volume_id = 1;
+    map<string, string> volume_context = 2;
+    string controller_id = 3;
+    string network = 4;
+    string target_path = 5;
+    map<string, string> secrets = 6; // OPTIONAL: secrets required to complete request
+}
+
+/**
+*
+*/
+message DPUPublishVolumeResponse {
+}
+
+
+/**
+*
+*/
+message DPUUnpublishVolumeRequest {
+    string volume_id = 1;
+    string target_path = 2;
+}
+
+/**
+*
+*/
+message DPUUnpublishVolumeResponse {
+}
+
+
+/**
+*
+*/
+message DPUGetInfoRequest {
+}
+
+/**
+*
+*/
+message DPUGetInfoResponse {
+    string dpu_type = 1;
+}
+
+/**
+*
+*/
+message DPUCreateControllerRequest {
+    string subsystem_nqn = 1;
+    optional int64 pf_index = 2; //optional
+    optional int64 vf_index = 3; //optional
+    optional string serial_number = 4; //optional
+    optional string model_number = 5; //optional
+}
+
+/**
+*
+*/
+message DPUCreateControllerResponse {
+    string controller_id = 1;
+}
+
+/**
+*
+*/
+message DPUDeleteControllerRequest {
+    string controller_id = 1;
+}
+
+/**
+*
+*/
+message DPUDeleteControllerResponse {
+}
